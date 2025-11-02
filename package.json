@@ -1,0 +1,20 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/alexspearsi/File-Manager#readme",
+  "bugs": {
+    "url": "https://github.com/alexspearsi/File-Manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexspearsi/File-Manager.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
