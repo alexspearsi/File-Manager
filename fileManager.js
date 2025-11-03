@@ -1,4 +1,4 @@
-import { cd, ls, up, hash, osInfo } from '#utils';
+import { cd, ls, up, hash, osInfo, compress } from '#utils';
 
 export async function fileManager(input, currentDir) {
   const [command, ...args] = input.split(' ');
@@ -20,6 +20,10 @@ export async function fileManager(input, currentDir) {
 
     case 'os':
       await osInfo(args[0]);
+      return currentDir;
+
+    case 'compress':
+      await compress(currentDir, args[0], args[1]);
       return currentDir;
 
     default:

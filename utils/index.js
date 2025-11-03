@@ -3,3 +3,4 @@ export { ls } from './ls.js';
 export { up } from './up.js';
 export { hash } from './hash.js';
 export { osInfo } from './osInfo.js';
+export { compress } from './compress.js';
