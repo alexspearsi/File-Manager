@@ -2,9 +2,9 @@ import { createReadStream, createWriteStream } from 'node:fs';
 import path from 'node:path';
 import { stat } from 'node:fs/promises';
 import { pipeline } from 'node:stream/promises';
-import { createBrotliCompress } from 'node:zlib';
+import { createBrotliCompress, createBrotliDecompress } from 'node:zlib';
 
-export async function compress(currentDir, source, destination) {
+export async function brotli(currentDir, source, destination, mode) {
   if (!source || !destination) {
     console.log('Operation failed');
     return;
@@ -23,11 +23,11 @@ export async function compress(currentDir, source, destination) {
 
     const readStream = createReadStream(srcPath);
     const writeStream = createWriteStream(destPath);
-    const brotli = createBrotliCompress();
+    const brotli = (mode === 'compress') ? createBrotliCompress() : createBrotliDecompress();
 
     await pipeline(readStream, brotli, writeStream);
 
-    console.log('Compressed successfully!');
+    console.log(mode === 'compress' ? 'Compressed successfully!' : 'Decompressed successfully!')
 
   } catch {
     console.log('Operation failed');
