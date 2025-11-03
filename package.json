@@ -1,17 +1,15 @@
 {
-  "name": "file-manager",
+  "name": "file-manage",
   "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/alexspearsi/File-Manager#readme",
-  "bugs": {
-    "url": "https://github.com/alexspearsi/File-Manager/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexspearsi/File-Manager.git"
-  },
-  "license": "ISC",
-  "author": "",
   "type": "module",
-  "main": "index.js"
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "imports": {
+    "#utils": "./utils/index.js"
+  }
 }
