@@ -1,8 +1,9 @@
 import fs, { createReadStream, createWriteStream } from 'node:fs';
 import path from 'node:path';
 import { pipeline } from 'node:stream/promises';
+import { unlink } from 'node:fs/promises';
 
-export async function cp(currentDir, sourceFile, destPathInput) {
+export async function cp(currentDir, sourceFile, destPathInput, willSrcDelete) {
   if (!sourceFile || !destPathInput) {
     console.log('Operation failed');
     return;
@@ -20,7 +21,11 @@ export async function cp(currentDir, sourceFile, destPathInput) {
 
     await pipeline(createReadStream(srcPath), createWriteStream(destPath));
 
-    console.log('Copied successfully');
+    if (willSrcDelete) {
+      await unlink(srcPath);
+    }
+
+    console.log(willSrcDelete ? 'Moved successfully' : 'Coppied successfully');
 
   } catch {
     console.log('Operation failed');

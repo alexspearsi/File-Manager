@@ -9,3 +9,4 @@ export { add } from './add.js';
 export { makeDir } from './mkdir.js';
 export { rn } from './rn.js';
 export { cp } from './cp.js';
+export { rm } from './rm.js';
