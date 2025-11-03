@@ -1,9 +1,12 @@
-import { cd, ls } from './utils/index.js';
+import { cd, ls, up } from './utils/index.js';
 
 export async function fileManager(input, currentDir) {
   const [command, ...args] = input.split(' ');
 
   switch(command) {
+    case 'up':
+      return up(currentDir);
+
     case 'cd':
       return await cd(currentDir, args[0]);
 
