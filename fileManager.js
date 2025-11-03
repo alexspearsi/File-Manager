@@ -1,4 +1,4 @@
-import { cd, ls, up } from './utils/index.js';
+import { cd, ls, up, hash } from './utils/index.js';
 
 export async function fileManager(input, currentDir) {
   const [command, ...args] = input.split(' ');
@@ -14,8 +14,14 @@ export async function fileManager(input, currentDir) {
       await ls(currentDir);
       return currentDir;
 
+    case 'hash':
+      await hash(currentDir, args[0]);
+      return currentDir;
+
     default:
       console.log('No such option');
       return currentDir;
   }
 }
+
+
