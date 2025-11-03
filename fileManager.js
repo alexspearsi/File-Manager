@@ -1,4 +1,4 @@
-import { cd, ls, up, hash, osInfo, brotli, cat } from '#utils';
+import { cd, ls, up, hash, osInfo, brotli, cat, add } from '#utils';
 
 export async function fileManager(input, currentDir) {
   const [command, ...args] = input.split(' ');
@@ -32,6 +32,10 @@ export async function fileManager(input, currentDir) {
 
     case 'cat':
       await cat(currentDir, args[0]);
+      return currentDir;
+
+    case 'add':
+      await add(currentDir, args[0]);
       return currentDir;
 
     default:

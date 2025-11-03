@@ -5,3 +5,4 @@ export { hash } from './hash.js';
 export { osInfo } from './osInfo.js';
 export { brotli } from './brotli.js';
 export { cat } from './cat.js';
+export { add } from './add.js';
