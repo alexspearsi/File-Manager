@@ -3,7 +3,7 @@ import readline from 'node:readline'
 import { fileManager } from './fileManager.js';
 
 const args = process.argv;
-const usernameArg = args.find(arg => arg.startsWith('--username='))
+const usernameArg = args.find(arg => arg.startsWith('--username='));
 
 const rawUser = usernameArg ? usernameArg.split('=').at(-1).trim() : '';
 
@@ -18,20 +18,24 @@ let currentDir = os.homedir();
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: `You are currently in ${currentDir}\n`
 })
 
-rl.setPrompt(`You are currently in ${currentDir}\n`)
-rl.prompt();
+function updatePrompt() {
+  console.log(`You are currently in ${currentDir}`);
+  rl.setPrompt('> ');
+  rl.prompt();
+}
+
+updatePrompt();
 
 rl.on('line', async(line) => {
   try {
     currentDir = await fileManager(line.trim(), currentDir);
-    console.log(currentDir);
   } catch (err) {
     console.log('Operation failed', err);
   }
 
+  updatePrompt();
 })
 
 rl.on('close', () => {
