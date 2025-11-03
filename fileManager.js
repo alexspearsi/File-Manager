@@ -1,4 +1,4 @@
-import { cd, ls, up, hash, osInfo, brotli } from '#utils';
+import { cd, ls, up, hash, osInfo, brotli, cat } from '#utils';
 
 export async function fileManager(input, currentDir) {
   const [command, ...args] = input.split(' ');
@@ -28,6 +28,10 @@ export async function fileManager(input, currentDir) {
 
     case 'decompress':
       await brotli(currentDir, args[0], args[1], 'decompress');
+      return currentDir;
+
+    case 'cat':
+      await cat(currentDir, args[0]);
       return currentDir;
 
     default:
