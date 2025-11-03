@@ -1,7 +1,7 @@
 import { rename } from 'node:fs/promises';
 import path from 'node:path';
 
-export async function renameFile(currentDir, oldFile, newFile) {
+export async function rn(currentDir, oldFile, newFile) {
   if (!oldFile || !newFile) {
     console.log('Operation failed');
     return;

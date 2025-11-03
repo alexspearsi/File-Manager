@@ -1,4 +1,4 @@
-import { cd, ls, up, hash, osInfo, brotli, cat, add, makeDir, renameFile } from '#utils';
+import { cd, ls, up, hash, osInfo, brotli, cat, add, makeDir, rn, cp } from '#utils';
 
 export async function fileManager(input, currentDir) {
   const [command, ...args] = input.split(' ');
@@ -42,8 +42,12 @@ export async function fileManager(input, currentDir) {
       await makeDir(currentDir, args[0]);
       return currentDir;
 
-    case 'rename':
-      await renameFile(currentDir, args[0], args[1]);
+    case 'rn':
+      await rn(currentDir, args[0], args[1]);
+      return currentDir;
+
+    case 'cp':
+      await cp(currentDir, args[0], args[1]);
       return currentDir;
 
     default:
