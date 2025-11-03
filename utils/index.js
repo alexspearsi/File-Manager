@@ -7,3 +7,4 @@ export { brotli } from './brotli.js';
 export { cat } from './cat.js';
 export { add } from './add.js';
 export { makeDir } from './mkdir.js';
+export { renameFile } from './renameFile.js';
